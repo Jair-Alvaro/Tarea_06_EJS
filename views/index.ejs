@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mi Portafolio</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <style>
+            body {
+                background-color: #1a1a1a;
+                color: #ffffff;
+            }
+
+            .navbar {
+                background-color: #333333;
+            }
+
+            .navbar-light .navbar-nav .nav-link {
+                color: #ffffff;
+            }
+
+            .navbar-light .navbar-toggler-icon {
+                background-color: #ffffff;
+            }
+
+            .section-title {
+                color: #ffffff;
+                border-bottom: 2px solid #4caf50;
+                padding-bottom: 10px;
+                margin-bottom: 20px;
+            }
+
+            .card {
+                background-color: #333333;
+                color: #ffffff;
+            }
+
+            .card-title {
+                color: #4caf50;
+            }
+        </style>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="#inicio">Mi Portafolio</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#inicio">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#sobre-mi">Sobre Mí</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#educacion">Educación</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#certificados">Certificados</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#experiencia-laboral">Experiencia Laboral</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#proyectos">Proyectos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#habilidades-tecnicas">Habilidades Técnicas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container mt-5">
+
+            <h1 class="mb-4">Bienvenido a mi Portafolio</h1>
+
+            <section id="inicio" class="py-4 rounded bg-dark mb-4">
+                <div class="text-center">
+                    <img src="<%= datos.imagenUrlfoto %>" class="rounded-circle img-fluid" style="max-width: 200px;" alt="Imagen de perfil">
+                    <h2 class="my-3"><%= datos.inicio %></h2>
+                </div>
+            </section>
+
+            <section id="sobre-mi" class="py-4 rounded bg-dark mb-4">
+                <h2 class="mb-3">Sobre Mí</h2>
+                <p class="mb-0"><%= datos.sobreMi %></p>
+            </section>
+
+            <section id="educacion" class="py-4 rounded bg-dark mb-4">
+                <h2 class="mb-3">Educación</h2>
+                <p class="mb-0"><%= datos.educacion %></p>
+            </section>
+
+            <section id="certificados" class="py-4 rounded bg-dark mb-4">
+                <h2 class="mb-3">Certificados</h2>
+                <ul>
+                    <% datos.certificaciones.forEach(certificado => { %>
+                        <li><%= certificado %></li>
+                    <% }); %>
+                </ul>
+            </section>
+
+            <section id="experiencia-laboral" class="py-4 rounded bg-dark mb-4">
+                <h2 class="mb-3">Experiencia Laboral</h2>
+                <p class="mb-0"><%= datos.experienciaLaboral %></p>
+            </section>
+
+            <section id="proyectos" class="py-4 rounded bg-dark mb-4">
+                <h2 class="mb-3">Proyectos</h2>
+                <div class="row">
+                    <% datos.proyectos.forEach(proyecto => { %>
+                        <div class="col-md-4 mb-4">
+                            <div class="card border-dark rounded">
+                                <img src="<%= proyecto.imagenUrl %>" class="card-img-top rounded-top" alt="<%= proyecto.nombre %>">
+                                <div class="card-body">
+                                    <h5 class="card-title"><%= proyecto.nombre %></h5>
+                                    <p class="card-text"><%= proyecto.descripcion %></p>
+                                </div>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+            </section>
+
+            <section id="habilidades-tecnicas" class="py-4 rounded bg-dark mb-4">
+                <h2 class="mb-3">Habilidades Técnicas</h2>
+                <ul>
+                    <% datos.habilidadesTecnicas.forEach(habilidad => { %>
+                        <li><%= habilidad %></li>
+                    <% }); %>
+                </ul>
+            </section>
+
+            <section id="contacto" class="py-4 rounded bg-dark mb-4">
+                <h2 class="mb-3">Contacto</h2>
+                <p class="mb-0">Email: <%= datos.email %></p>
+                <p class="mb-0">Teléfono: <%= datos.telefono %></p>
+            </section>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+</html>
